@@ -1,0 +1,598 @@
+:root {
+    --primary: #0d5a67;
+    --secondary: #dc8044;
+    --accent-blue: #215387;
+    --accent-teal: #006778;
+    --light-teal: #80c6c6;
+    --bg-primary: #ece8e2;
+    --bg-white: #ffffff;
+
+    --font-body: 'DM Sans', sans-serif;
+    --font-heading: 'DM Sans', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    --global-content-width: 98rem;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-body);
+    background-color: var(--bg-primary);
+    color: var(--primary);
+    font-size: 1.125rem;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-heading);
+    margin-top: 0;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+h2 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    border-bottom: 4px solid var(--secondary);
+    padding-bottom: 0.5rem;
+    display: inline-block;
+}
+
+h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+p {
+    margin-bottom: 1.5rem;
+}
+
+/* Layout */
+.container {
+    max-width: var(--global-content-width);
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+section {
+    padding: 8rem 0;
+    /* Huge vertical pacing based on tech-stack rules */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+
+section.dark {
+    background-color: var(--primary);
+    color: white;
+}
+
+section.dark h2 {
+    border-bottom-color: var(--secondary);
+}
+
+section.dark p {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+section.accent {
+    background-color: var(--accent-teal);
+    color: white;
+}
+
+/* Grids */
+.grid {
+    display: grid;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.grid-2 {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+}
+
+.grid-3 {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+/* Components */
+.card {
+    background-color: var(--bg-white);
+    padding: 2.5rem;
+    border-left: 8px solid var(--primary);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    color: var(--primary);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card p {
+    color: var(--primary) !important;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.card.highlight {
+    border-left-color: var(--secondary);
+}
+
+.metric {
+    background-color: var(--bg-white);
+    padding: 3rem 2rem;
+    text-align: center;
+    border: 2px solid var(--light-teal);
+    color: var(--primary);
+}
+
+.metric.negative-border {
+    border-color: #b82105;
+}
+
+.metric .number {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 5rem;
+    font-weight: 700;
+    color: var(--secondary);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+
+.metric .label {
+    display: block;
+    font-family: var(--font-body);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+}
+
+.metric .delta {
+    display: inline-block;
+    font-family: var(--font-mono);
+    background-color: var(--accent-teal);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    font-size: 1rem;
+    margin-top: 1.5rem;
+}
+
+.metric .delta.negative {
+    background-color: #b82105;
+}
+
+/* Data Vis - CSS Bar Chart */
+.bar-chart {
+    margin-top: 3rem;
+}
+
+.bar-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.bar-label {
+    width: 150px;
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding-right: 1.5rem;
+    text-align: right;
+    flex-shrink: 0;
+}
+
+.bar-container {
+    flex-grow: 1;
+    background-color: rgba(13, 90, 103, 0.1);
+    height: 50px;
+    position: relative;
+}
+
+.bar-fill {
+    height: 100%;
+    background-color: var(--primary);
+    display: flex;
+    align-items: center;
+    padding-left: 1.5rem;
+    color: white;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+    /* Animation */
+}
+
+.bar-fill.highlight {
+    background-color: var(--secondary);
+}
+
+/* Data Vis - Orbit System */
+.orbit-network {
+    position: relative;
+    width: 100%;
+    max-width: 650px;
+    /* Increased to accommodate larger rings */
+    height: 600px;
+    /* Increased to accommodate larger rings */
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.orbit-center {
+    width: 480px;
+    /* Increased from 320px (+160px) */
+    height: 480px;
+    background-color: var(--accent-teal);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    box-shadow: 0 10px 30px rgba(13, 90, 103, 0.2);
+    z-index: 10;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.orbit-center:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 40px rgba(13, 90, 103, 0.3);
+}
+
+.pulse-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 2px solid var(--accent-teal);
+    animation: pulse 3s infinite;
+    pointer-events: none;
+}
+
+@keyframes pulse {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(1.4);
+        opacity: 0;
+    }
+}
+
+.orbit-center .number {
+    font-family: var(--font-mono);
+    font-size: 10rem;
+    /* Increased further to match 480px size */
+    font-weight: 700;
+    color: var(--secondary);
+    line-height: 1;
+}
+
+.orbit-center .label {
+    font-family: var(--font-body);
+    font-size: 1.5rem;
+    /* Increased */
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 0.5rem;
+    letter-spacing: 1px;
+}
+
+/* Orbit Paths */
+.orbit-path {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    border: 2px solid rgba(13, 90, 103, 0.15);
+    /* Solid track line */
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+}
+
+.orbit-social {
+    width: 520px;
+    /* Increased to fit around new 480px core */
+    height: 520px;
+    animation: spin-orbit 25s linear infinite;
+    animation-delay: -10s;
+}
+
+.orbit-referral {
+    width: 580px;
+    /* Increased to fit around new social ring */
+    height: 580px;
+    animation: spin-orbit-reverse 40s linear infinite;
+    animation-delay: -2s;
+}
+
+@keyframes spin-orbit {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+@keyframes spin-orbit-reverse {
+    from {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+
+    to {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+}
+
+@keyframes counter-spin-orbit {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    to {
+        transform: translate(-50%, -50%) rotate(-360deg);
+    }
+}
+
+@keyframes counter-spin-orbit-reverse {
+    from {
+        transform: translate(-50%, -50%) rotate(-360deg);
+    }
+
+    to {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+}
+
+/* Satellites */
+.satellite-wrapper {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 20;
+    /* Ensures satellites sit above the core if they overlap */
+}
+
+.orbit-social .satellite-wrapper {
+    animation: counter-spin-orbit 25s linear infinite;
+    animation-delay: -10s;
+}
+
+.orbit-referral .satellite-wrapper {
+    animation: counter-spin-orbit-reverse 40s linear infinite;
+    animation-delay: -2s;
+}
+
+/* Pause animation on hover */
+.orbit-network:hover .orbit-social,
+.orbit-network:hover .orbit-social .satellite-wrapper,
+.orbit-network:hover .orbit-referral,
+.orbit-network:hover .orbit-referral .satellite-wrapper {
+    animation-play-state: paused;
+}
+
+.satellite-node {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.8), 0 4px 8px rgba(0, 0, 0, 0.15);
+    /* Ring glow effect */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    flex-shrink: 0;
+    position: relative;
+    border: 2px solid white;
+}
+
+.satellite-wrapper:hover .satellite-node {
+    transform: scale(1.3);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+}
+
+/* Tooltips */
+.sat-tooltip {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background: var(--primary);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    width: max-content;
+    max-width: 200px;
+    text-align: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 20;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.sat-tooltip::before {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color: transparent transparent var(--primary) transparent;
+}
+
+.satellite-wrapper:hover .sat-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* Callout */
+.callout {
+    background-color: var(--primary);
+    color: white;
+    padding: 3rem;
+    font-size: 2rem;
+    line-height: 1.4;
+    border-left: 12px solid var(--secondary);
+    margin-top: 3rem;
+}
+
+/* Table */
+.data-table-wrapper {
+    overflow-x: auto;
+    margin-top: 3rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+th {
+    background-color: var(--primary);
+    color: white;
+    text-align: left;
+    padding: 1.5rem;
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    font-size: 1rem;
+}
+
+td {
+    padding: 2rem 1.5rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    font-size: 1.5rem;
+}
+
+td:last-child {
+    font-weight: 700;
+    color: var(--secondary);
+    font-family: var(--font-mono);
+}
+
+.badge {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    background: var(--secondary);
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    vertical-align: middle;
+    margin-left: 1rem;
+    text-transform: uppercase;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: clamp(3rem, 5vw, 6rem);
+    margin-bottom: 1rem;
+}
+
+.hero h1 span {
+    color: var(--secondary);
+}
+
+.hero .meta {
+    font-family: var(--font-mono);
+    font-size: 1.5rem;
+    color: var(--light-teal);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* 
+  ========================================
+  BEAUTIFUL SCROLL ANIMATIONS & INTERACTIONS
+  ======================================== 
+*/
+.reveal {
+    opacity: 0;
+    transform: translateY(40px) scale(0.98);
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: opacity, transform;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* Stagger card reveals in grids */
+.grid .reveal:nth-child(1) {
+    transition-delay: 0.1s;
+}
+
+.grid .reveal:nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+.grid .reveal:nth-child(3) {
+    transition-delay: 0.3s;
+}
+
+.grid .reveal:nth-child(4) {
+    transition-delay: 0.4s;
+}
+
+/* Interactive Hover States */
+.card {
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.metric {
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.metric:hover {
+    transform: scale(1.03);
+    border-color: var(--secondary);
+}
+
+.metric.negative-border:hover {
+    border-color: #b82105;
+}
+
+/* Initial bar chart width is 0 for animation */
+.bar-fill {
+    width: 0;
+    /* Overridden by inline style via JS on scroll */
+}

@@ -1,0 +1,867 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <base href="https://vinylmarketing.com">
+    <script>window.frameElement._load()</script>
+    <style>
+        html {
+            height: auto !important;
+            min-height: 100%;
+        }
+
+        /* Lowest specificity to not override global styles */
+        :where(body) {
+            margin: 0;
+            /* Default background color in case zoom out mode background
+				colors the html element */
+            background-color: white;
+        }
+    </style>
+    <link rel='stylesheet' id='wp-components-css'
+        href='https://vinylmarketing.com/wp-includes/css/dist/components/style.min.css?ver=6.9.1' media='all' />
+    <link rel='stylesheet' id='common-css' href='https://vinylmarketing.com/wp-admin/css/common.min.css?ver=6.9.1'
+        media='all' />
+    <link rel='stylesheet' id='forms-css' href='https://vinylmarketing.com/wp-admin/css/forms.min.css?ver=6.9.1'
+        media='all' />
+    <link rel='stylesheet' id='wp-reset-editor-styles-css'
+        href='https://vinylmarketing.com/wp-includes/css/dist/block-library/reset.min.css?ver=6.9.1' media='all' />
+    <style id='kadence-blocks-global-editor-styles-inline-css'>
+        :root {
+            --global-kb-font-size-sm: clamp(0.8rem, 0.73rem + 0.217vw, 0.9rem);
+            --global-kb-font-size-md: clamp(1.1rem, 0.995rem + 0.326vw, 1.25rem);
+            --global-kb-font-size-lg: clamp(1.75rem, 1.576rem + 0.543vw, 2rem);
+            --global-kb-font-size-xl: clamp(2.25rem, 1.728rem + 1.63vw, 3rem);
+            --global-kb-font-size-xxl: clamp(2.5rem, 1.456rem + 3.26vw, 4rem);
+            --global-kb-font-size-xxxl: clamp(2.75rem, 0.489rem + 7.065vw, 6rem);
+        }
+
+        .kb-header-container,
+        .wp-block-kadence-navigation-link {
+            --global-content-width: 98rem;
+        }
+
+        .editor-styles-wrapper {
+            --kb-global-content-width: 98rem;
+        }
+
+        .wp-block-kadence-rowlayout>.kb-theme-content-width {
+            max-width: 98rem;
+        }
+
+        :root {
+            --global-kb-spacing-xxs: 0.5rem;
+            --global-kb-spacing-xs: 1rem;
+            --global-kb-spacing-sm: 1.5rem;
+            --global-kb-spacing-md: 2rem;
+            --global-kb-spacing-lg: 3rem;
+            --global-kb-spacing-xl: 4rem;
+            --global-kb-spacing-xxl: 5rem;
+            --global-kb-spacing-3xl: 6.5rem;
+            --global-kb-spacing-4xl: 8rem;
+            --global-kb-spacing-5xl: 10rem;
+            --global-row-edge-sm: 15px;
+            --global-row-edge-theme: var(--global-content-edge-padding);
+            --global-kb-gutter-sm: 1rem;
+            --global-kb-gutter-md: 2rem;
+            --global-kb-gutter-lg: 3rem;
+            --global-kb-gutter-xl: 5rem;
+            --global-kb-editor-admin-sidebar: 0px;
+            --global-kb-editor-sidebar: 0px;
+            --global-kb-editor-sidebar-secondary: 0px;
+            --global-kb-editor-full-width: calc(100vw - (var(--global-kb-editor-sidebar) + var(--global-kb-editor-sidebar-secondary) + var(--global-kb-editor-admin-sidebar)));
+        }
+
+        .interface-interface-skeleton:has(.interface-interface-skeleton__sidebar:not(:empty)) .interface-interface-skeleton__content {
+            --global-kb-editor-sidebar: 281px;
+            --global-kb-editor-full-width: calc(100vw - (var(--global-kb-editor-sidebar) + var(--global-kb-editor-sidebar-secondary) + var(--global-kb-editor-admin-sidebar)));
+        }
+
+        .interface-interface-skeleton .interface-interface-skeleton__secondary-sidebar~.interface-interface-skeleton__content {
+            --global-kb-editor-sidebar-secondary: 351px;
+            --global-kb-editor-full-width: calc(100vw - (var(--global-kb-editor-sidebar) + var(--global-kb-editor-sidebar-secondary) + var(--global-kb-editor-admin-sidebar)));
+        }
+
+        body.block-editor-page:not(.is-fullscreen-mode) .interface-interface-skeleton .interface-interface-skeleton__content {
+            --global-kb-editor-admin-sidebar: 160px;
+            --global-kb-editor-full-width: calc(100vw - (var(--global-kb-editor-sidebar) + var(--global-kb-editor-sidebar-secondary) + var(--global-kb-editor-admin-sidebar)));
+        }
+
+        :root .post-content-style-boxed {
+            --global-row-edge-theme: calc(var(--global-content-edge-padding) + 2rem);
+        }
+
+        /*# sourceURL=kadence-blocks-global-editor-styles-inline-css */
+    </style>
+    <style id='kadence-editor-global-inline-css'>
+        /* Kadence Dynamic CSS */
+        :root {
+            --global-palette1: #dc8044;
+            --global-palette2: #215387;
+            --global-palette3: #0d5a67;
+            --global-palette4: #0d5a67;
+            --global-palette5: #0d5a67;
+            --global-palette6: #dc8044;
+            --global-palette7: #f1f1ef;
+            --global-palette8: #ece8e2;
+            --global-palette9: #ffffff;
+            --global-palette10: oklch(from var(--global-palette1) calc(l + 0.10 * (1 - l)) calc(c * 1.00) calc(h + 180) / 100%);
+            --global-palette11: #13612e;
+            --global-palette12: #1159af;
+            --global-palette13: #b82105;
+            --global-palette14: #f7630c;
+            --global-palette15: #f5a524;
+            --global-palette-highlight: var(--global-palette1);
+            --global-palette-highlight-alt: var(--global-palette2);
+            --global-palette-highlight-alt2: var(--global-palette9);
+            --global-palette-btn: var(--global-palette3);
+            --global-palette-btn-hover: var(--global-palette4);
+            --global-palette-btn-bg: rgba(0, 0, 0, 0);
+            --global-palette-btn-bg-hover: rgba(0, 0, 0, 0);
+            --global-palette-btn-sec-bg: var(--global-palette7);
+            --global-palette-btn-sec-bg-hover: var(--global-palette2);
+            --global-palette-btn-sec: var(--global-palette3);
+            --global-palette-btn-sec-hover: var(--global-palette9);
+            --global-fallback-font: sans-serif;
+            --global-display-fallback-font: sans-serif;
+            --global-body-font-family: 'DM Sans', sans-serif;
+            --global-heading-font-family: 'DM Sans', sans-serif;
+            --global-content-width: 98rem;
+            --global-content-narrow-width: 835px;
+            --global-content-edge-padding: 1.5rem;
+            --global-content-wide-width: calc(var(--global-content-width) + 160px);
+            --global-content-narrow-wide-width: calc(var(--global-content-narrow-width) + 260px);
+            --global-calc-content-width: calc(var(--global-content-width) - var(--global-content-edge-padding) - var(--global-content-edge-padding));
+            --global-calc-wide-content-width: calc(var(--global-content-width) + 160px);
+        }
+
+        .components-panel__header.edit-post-sidebar__panel-tabs ul {
+            margin: 0px;
+        }
+
+        :root .has-theme-palette-1-background-color {
+            background-color: var(--global-palette1);
+        }
+
+        :root .has-theme-palette-1-color {
+            color: var(--global-palette1);
+        }
+
+        :root .has-theme-palette-2-background-color {
+            background-color: var(--global-palette2);
+        }
+
+        :root .has-theme-palette-2-color {
+            color: var(--global-palette2);
+        }
+
+        :root .has-theme-palette-3-background-color {
+            background-color: var(--global-palette3);
+        }
+
+        :root .has-theme-palette-3-color {
+            color: var(--global-palette3);
+        }
+
+        :root .has-theme-palette-4-background-color {
+            background-color: var(--global-palette4);
+        }
+
+        :root .has-theme-palette-4-color {
+            color: var(--global-palette4);
+        }
+
+        :root .has-theme-palette-5-background-color {
+            background-color: var(--global-palette5);
+        }
+
+        :root .has-theme-palette-5-color {
+            color: var(--global-palette5);
+        }
+
+        :root .has-theme-palette-6-background-color {
+            background-color: var(--global-palette6);
+        }
+
+        :root .has-theme-palette-6-color {
+            color: var(--global-palette6);
+        }
+
+        :root .has-theme-palette-7-background-color {
+            background-color: var(--global-palette7);
+        }
+
+        :root .has-theme-palette-7-color {
+            color: var(--global-palette7);
+        }
+
+        :root .has-theme-palette-8-background-color {
+            background-color: var(--global-palette8);
+        }
+
+        :root .has-theme-palette-8-color {
+            color: var(--global-palette8);
+        }
+
+        :root .has-theme-palette-9-background-color {
+            background-color: var(--global-palette9);
+        }
+
+        :root .has-theme-palette-9-color {
+            color: var(--global-palette9);
+        }
+
+        :root .has-theme-palette-10-background-color {
+            background-color: var(--global-palette10);
+        }
+
+        :root .has-theme-palette-10-color {
+            color: var(--global-palette10);
+        }
+
+        :root .has-theme-palette-11-background-color {
+            background-color: var(--global-palette11);
+        }
+
+        :root .has-theme-palette-11-color {
+            color: var(--global-palette11);
+        }
+
+        :root .has-theme-palette-12-background-color {
+            background-color: var(--global-palette12);
+        }
+
+        :root .has-theme-palette-12-color {
+            color: var(--global-palette12);
+        }
+
+        :root .has-theme-palette-13-background-color {
+            background-color: var(--global-palette13);
+        }
+
+        :root .has-theme-palette-13-color {
+            color: var(--global-palette13);
+        }
+
+        :root .has-theme-palette-14-background-color {
+            background-color: var(--global-palette14);
+        }
+
+        :root .has-theme-palette-14-color {
+            color: var(--global-palette14);
+        }
+
+        :root .has-theme-palette-15-background-color {
+            background-color: var(--global-palette15);
+        }
+
+        :root .has-theme-palette-15-color {
+            color: var(--global-palette15);
+        }
+
+        :root .has-theme-palette1-background-color {
+            background-color: var(--global-palette1);
+        }
+
+        :root .has-theme-palette1-color {
+            color: var(--global-palette1);
+        }
+
+        :root .has-theme-palette2-background-color {
+            background-color: var(--global-palette2);
+        }
+
+        :root .has-theme-palette2-color {
+            color: var(--global-palette2);
+        }
+
+        :root .has-theme-palette3-background-color {
+            background-color: var(--global-palette3);
+        }
+
+        :root .has-theme-palette3-color {
+            color: var(--global-palette3);
+        }
+
+        :root .has-theme-palette4-background-color {
+            background-color: var(--global-palette4);
+        }
+
+        :root .has-theme-palette4-color {
+            color: var(--global-palette4);
+        }
+
+        :root .has-theme-palette5-background-color {
+            background-color: var(--global-palette5);
+        }
+
+        :root .has-theme-palette5-color {
+            color: var(--global-palette5);
+        }
+
+        :root .has-theme-palette6-background-color {
+            background-color: var(--global-palette6);
+        }
+
+        :root .has-theme-palette6-color {
+            color: var(--global-palette6);
+        }
+
+        :root .has-theme-palette7-background-color {
+            background-color: var(--global-palette7);
+        }
+
+        :root .has-theme-palette7-color {
+            color: var(--global-palette7);
+        }
+
+        :root .has-theme-palette8-background-color {
+            background-color: var(--global-palette8);
+        }
+
+        :root .has-theme-palette8-color {
+            color: var(--global-palette8);
+        }
+
+        :root .has-theme-palette9-background-color {
+            background-color: var(--global-palette9);
+        }
+
+        :root .has-theme-palette9-color {
+            color: var(--global-palette9);
+        }
+
+        :root .has-theme-palette10-background-color {
+            background-color: var(--global-palette10);
+        }
+
+        :root .has-theme-palette10-color {
+            color: var(--global-palette10);
+        }
+
+        :root .has-theme-palette11-background-color {
+            background-color: var(--global-palette11);
+        }
+
+        :root .has-theme-palette11-color {
+            color: var(--global-palette11);
+        }
+
+        :root .has-theme-palette12-background-color {
+            background-color: var(--global-palette12);
+        }
+
+        :root .has-theme-palette12-color {
+            color: var(--global-palette12);
+        }
+
+        :root .has-theme-palette13-background-color {
+            background-color: var(--global-palette13);
+        }
+
+        :root .has-theme-palette13-color {
+            color: var(--global-palette13);
+        }
+
+        :root .has-theme-palette14-background-color {
+            background-color: var(--global-palette14);
+        }
+
+        :root .has-theme-palette14-color {
+            color: var(--global-palette14);
+        }
+
+        :root .has-theme-palette15-background-color {
+            background-color: var(--global-palette15);
+        }
+
+        :root .has-theme-palette15-color {
+            color: var(--global-palette15);
+        }
+
+        .editor-styles-wrapper .wp-block-button .wp-block-button__link,
+        .editor-styles-wrapper .kt-button.kb-btn-global-inherit {
+            font-style: normal;
+            font-weight: normal;
+            font-size: 1.125rem;
+            line-height: 1.5;
+            letter-spacing: 0em;
+            font-family: 'JetBrains Mono', monospace;
+            text-transform: uppercase;
+        }
+
+        .kt-button.kb-btn-global-outline.kb-btn-global-inherit {
+            padding-top: calc(px - 2px);
+            padding-right: calc(px - 2px);
+            padding-bottom: calc(px - 2px);
+            padding-left: calc(px - 2px);
+        }
+
+        .editor-styles-wrapper .wp-block-button .wp-block-button__link,
+        .editor-styles-wrapper .kb-forms-submit,
+        .editor-styles-wrapper .kt-button {
+            box-shadow: 0px 0px 0px -7px rgba(0, 0, 0, 0);
+        }
+
+        .editor-styles-wrapper .wp-block-button:not(.is-style-outline) .wp-block-button__link,
+        .editor-styles-wrapper .kt-button.kb-btn-global-inherit {
+            border: 0px solid currentColor;
+        }
+
+        .editor-styles-wrapper .wp-block-button .wp-block-button__link:hover,
+        .editor-styles-wrapper .kb-forms-submit:hover,
+        .editor-styles-wrapper .kt-button:hover {
+            box-shadow: 0px 15px 25px -7px rgba(0, 0, 0, 0);
+        }
+
+        .editor-styles-wrapper .kt-button {
+            font-style: normal;
+            font-weight: normal;
+            font-size: 1.125rem;
+            line-height: 1.5;
+            letter-spacing: 0em;
+            font-family: 'JetBrains Mono', monospace;
+            text-transform: uppercase;
+        }
+
+        .block-editor-page .editor-styles-wrapper,
+        body.editor-styles-wrapper {
+            --kad-editor-body-bg: var(--global-palette8);
+            --kad-editor-content-bg: var(--global-palette8);
+            background: var(--kad-editor-content-bg, var(--kad-editor-body-bg, #fff));
+            font-style: normal;
+            font-weight: 300;
+            font-size: 1.313rem;
+            line-height: 1.5em;
+            letter-spacing: 0em;
+            font-family: 'DM Sans', sans-serif;
+            color: var(--global-palette4);
+        }
+
+        body.editor-styles-wrapper {
+            --kad-editor-vertical-top-padding: 5rem;
+            --kad-editor-vertical-bottom-padding: 5rem;
+        }
+
+        @media all and (max-width: 1024px) {
+            body.editor-styles-wrapper {
+                --kad-editor-vertical-top-padding: 3rem;
+                --kad-editor-vertical-bottom-padding: 3rem;
+            }
+        }
+
+        @media all and (max-width: 767px) {
+            body.editor-styles-wrapper {
+                --kad-editor-vertical-top-padding: 2rem;
+                --kad-editor-vertical-bottom-padding: 2rem;
+            }
+        }
+
+        .block-editor-page.post-content-style-boxed .editor-styles-wrapper,
+        .admin-color-pcs-boxed.editor-styles-wrapper {
+            background: var(--kad-editor-body-bg, #fff);
+        }
+
+        .block-editor-page.post-content-style-boxed .editor-styles-wrapper:before,
+        .admin-color-pcs-boxed.editor-styles-wrapper:before {
+            background: var(--kad-editor-content-bg, #fff);
+        }
+
+        .block-editor-page.post-type-page .editor-styles-wrapper,
+        .admin-color-post-type-page.editor-styles-wrapper {
+            --kad-editor-title-height: 200px;
+        }
+
+        .block-editor-page.post-type-post .editor-styles-wrapper,
+        .admin-color-post-type-post.editor-styles-wrapper {
+            --kad-editor-title-height: 200px;
+        }
+
+        .block-editor-page.post-content-style-boxed .editor-styles-wrapper:before,
+        .admin-color-pcs-boxed.editor-styles-wrapper:before {
+            max-width: calc(98rem - var(--global-content-edge-padding) - var(--global-content-edge-padding));
+        }
+
+        .block-editor-page.post-content-style-boxed.post-content-width-narrow .editor-styles-wrapper:before,
+        .admin-color-pcw-narrow.admin-color-pcs-boxed.editor-styles-wrapper:before {
+            max-width: calc(var(--global-content-narrow-width) - var(--global-content-edge-padding) - var(--global-content-edge-padding));
+        }
+
+        .block-editor-page.post-content-style-boxed.post-content-sidebar-right .editor-styles-wrapper:before,
+        .block-editor-page.post-content-style-boxed.post-content-sidebar-left .editor-styles-wrapper:before,
+        .admin-color-pc-sidebar-right.admin-color-pcs-boxed.editor-styles-wrapper:before,
+        .admin-color-pc-sidebar-left.admin-color-pcs-boxed.editor-styles-wrapper:before {
+            max-width: calc(98rem - 436px - 3.5rem - var(--global-content-edge-padding) - var(--global-content-edge-padding));
+        }
+
+        .block-editor-page.post-content-style-boxed.post-content-width-fullwidth .editor-styles-wrapper:before,
+        .admin-color-pcw-fullwidth.admin-color-pcs-boxed.editor-styles-wrapper:before {
+            max-width: 100%;
+        }
+
+        .editor-styles-wrapper .block-editor-block-list__layout.is-root-container>*,
+        .editor-styles-wrapper .edit-post-visual-editor__post-title-wrapper>* {
+            max-width: var(--global-calc-content-width);
+        }
+
+        .editor-styles-wrapper .edit-post-visual-editor__post-title-wrapper>[data-align="wide"],
+        .editor-styles-wrapper .block-editor-block-list__layout.is-root-container>[data-align="wide"] {
+            max-width: var(--global-content-wide-width);
+        }
+
+        .post-content-style-unboxed,
+        .admin-color-pcs-unboxed {
+            --global-calc-content-width: var(--global-content-width);
+        }
+
+        .post-content-style-boxed,
+        .admin-color-pcs-boxed {
+            --global-calc-content-width: calc(var(--global-content-width) - var(--global-content-edge-padding) - var(--global-content-edge-padding) - 4rem);
+        }
+
+        .post-content-width-narrow,
+        .admin-color-pcw-narrow {
+            --global-content-width: var(--global-content-narrow-width);
+        }
+
+        .post-content-sidebar-right,
+        .post-content-sidebar-left,
+        .admin-color-pc-sidebar-right,
+        .admin-color-pc-sidebar-left {
+            --global-content-width: calc(98rem - 3.5rem - 436px);
+        }
+
+        .post-content-width-fullwidth,
+        .admin-color-pcw-fullwidth {
+            --global-calc-content-width: 100%;
+        }
+
+        .post-content-width-fullwidth.post-content-style-boxed,
+        .admin-color-pcw-fullwidth.admin-color-pcs-boxed {
+            --global-calc-content-width: calc(100% - 4rem);
+        }
+
+        .editor-styles-wrapper .wp-block-kadence-rowlayout>.innerblocks-wrap.kb-theme-content-width {
+            padding-left: var(--global-content-edge-padding);
+            padding-right: var(--global-content-edge-padding);
+        }
+
+        .post-content-style-boxed,
+        .admin-color-pcs-boxed {
+            --global-content-wide-width: calc(var(--global-content-width) + 4rem);
+            --global-calc-wide-content-width: calc(var(--global-content-width) + 4rem);
+        }
+
+        body.block-editor-page.post-content-style-boxed.post-content-sidebar-right .block-editor-block-list__layout .wp-block[data-align=wide],
+        body.block-editor-page.post-content-style-boxed.post-content-sidebar-right .block-editor-block-list__layout .wp-block.alignwide,
+        body.block-editor-page.post-content-style-boxed.post-content-sidebar-left .block-editor-block-list__layout .wp-block[data-align=wide],
+        body.block-editor-page.post-content-style-boxed.post-content-sidebar-left .block-editor-block-list__layout .wp-block.alignwide,
+        .admin-color-pcs-boxed.admin-color-pc-sidebar-right .block-editor-block-list__layout .wp-block[data-align=wide],
+        .admin-color-pcs-boxed.admin-color-pc-sidebar-right .block-editor-block-list__layout .wp-block.alignwide,
+        .admin-color-pcs-boxed.admin-color-pc-sidebar-left .block-editor-block-list__layout .wp-block[data-align=wide],
+        .admin-color-pcs-boxed.admin-color-pc-sidebar-left .block-editor-block-list__layout .wp-block.alignwide {
+            max-width: calc(var(--global-content-width) - 436px - 3.5em - var(--global-content-edge-padding));
+        }
+
+        .editor-styles-wrapper .wp-block[data-align="full"],
+        .editor-styles-wrapper .wp-block.alignfull {
+            max-width: none !important;
+        }
+
+        .block-editor-page.kadence-preview-width-tablet .editor-styles-wrapper:before {
+            max-width: 810px !important;
+        }
+
+        .block-editor-page.kadence-preview-width-mobile .editor-styles-wrapper:before {
+            max-width: 390px !important;
+        }
+
+        .editor-styles-wrapper .editor-post-title .editor-post-title__input,
+        .editor-post-title.wp-block .editor-post-title.wp-block__input,
+        .editor-styles-wrapper h1,
+        .editor-styles-wrapper h2,
+        .editor-styles-wrapper h3,
+        .editor-styles-wrapper h4,
+        .editor-styles-wrapper h5,
+        .editor-styles-wrapper h6 {
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .editor-styles-wrapper .editor-post-title .editor-post-title__input,
+        .editor-styles-wrapper h1,
+        .block-editor-page .editor-post-title.wp-block .editor-post-title.wp-block__input,
+        .editor-styles-wrapper .edit-post-visual-editor__post-title-wrapper h1 {
+            font-style: normal;
+            font-weight: normal;
+            font-size: 32px;
+            line-height: 1;
+            color: var(--global-palette3);
+        }
+
+        .editor-styles-wrapper h2 {
+            font-style: normal;
+            font-weight: normal;
+            font-size: 28px;
+            line-height: 1;
+            color: var(--global-palette3);
+        }
+
+        .editor-styles-wrapper h3 {
+            font-style: normal;
+            font-weight: 500;
+            font-size: 24px;
+            line-height: 1;
+            color: var(--global-palette3);
+        }
+
+        .editor-styles-wrapper h4 {
+            font-style: normal;
+            font-weight: 500;
+            font-size: 22px;
+            line-height: 1;
+            color: var(--global-palette4);
+        }
+
+        .editor-styles-wrapper h5 {
+            font-style: normal;
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 11.5;
+            color: var(--global-palette4);
+        }
+
+        .editor-styles-wrapper h6 {
+            font-style: normal;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 1;
+            color: var(--global-palette5);
+        }
+
+        /*# sourceURL=kadence-editor-global-inline-css */
+    </style>
+    <link rel='stylesheet' id='kadence-google-fonts-css'
+        href='https://fonts.googleapis.com/css?family=DM+Sans%3A300%2Cregular%2C500%2C700%7CJetBrains+Mono%3Aregular&#038;display=swap&#038;ver=1.4.4'
+        media='all' />
+    <link rel='stylesheet' id='wp-block-library-css'
+        href='https://vinylmarketing.com/wp-includes/css/dist/block-library/style.min.css?ver=6.9.1' media='all' />
+    <link rel='stylesheet' id='wp-block-editor-content-css'
+        href='https://vinylmarketing.com/wp-includes/css/dist/block-editor/content.min.css?ver=6.9.1' media='all' />
+    <link rel='stylesheet' id='wp-editor-classic-layout-styles-css'
+        href='https://vinylmarketing.com/wp-includes/css/dist/edit-post/classic.min.css?ver=6.9.1' media='all' />
+    <link rel='stylesheet' id='wp-edit-blocks-css'
+        href='https://vinylmarketing.com/wp-includes/css/dist/block-library/editor.min.css?ver=6.9.1' media='all' />
+    <link rel='stylesheet' id='classic-theme-styles-css'
+        href='https://vinylmarketing.com/wp-includes/css/classic-themes.min.css?ver=6.9.1' media='all' />
+    <link rel='stylesheet' id='safe-svg-svg-icon-style-css'
+        href='https://vinylmarketing.com/wp-content/plugins/safe-svg/dist/safe-svg-block-frontend.css?ver=6.9.1'
+        media='all' />
+    <link rel='stylesheet' id='vm-blocks-bubble-style-css'
+        href='https://vinylmarketing.com/wp-content/plugins/vm-bubble-blocks/build/bubble/style-index.css?ver=6.9.1'
+        media='all' />
+    <link rel='stylesheet' id='vm-blocks-bubble-cluster-style-css'
+        href='https://vinylmarketing.com/wp-content/plugins/vm-bubble-blocks/build/bubble-cluster/style-index.css?ver=6.9.1'
+        media='all' />
+    <link rel='stylesheet' id='kadence-components-css'
+        href='https://vinylmarketing.com/wp-content/plugins/kadence-blocks/dist/components.css?ver=219fc03434baa50b89bd'
+        media='all' />
+    <link rel='stylesheet' id='kadence-blocks-column-css'
+        href='https://vinylmarketing.com/wp-content/plugins/kadence-blocks/dist/blocks-column.css?ver=8c280b2fedafb3976dec'
+        media='all' />
+    <link rel='stylesheet' id='kadence-creative-kit-marquee-css'
+        href='https://vinylmarketing.com/wp-content/plugins/kadence-creative-kit/build/blocks/marquee/style-index.css?ver=1.1.2'
+        media='all' />
+    <link rel='stylesheet' id='dashicons-css'
+        href='https://vinylmarketing.com/wp-includes/css/dashicons.min.css?ver=6.9.1' media='all' />
+    <link rel='stylesheet' id='gravity_forms_theme_reset-css'
+        href='https://vinylmarketing.com/wp-content/plugins/gravityforms/assets/css/dist/gravity-forms-theme-reset.min.css?ver=2.9.28'
+        media='all' />
+    <link rel='stylesheet' id='gravity_forms_theme_foundation-css'
+        href='https://vinylmarketing.com/wp-content/plugins/gravityforms/assets/css/dist/gravity-forms-theme-foundation.min.css?ver=2.9.28'
+        media='all' />
+    <link rel='stylesheet' id='gravity_forms_theme_framework-css'
+        href='https://vinylmarketing.com/wp-content/plugins/gravityforms/assets/css/dist/gravity-forms-theme-framework.min.css?ver=2.9.28'
+        media='all' />
+    <link rel='stylesheet' id='gravity_forms_orbital_theme-css'
+        href='https://vinylmarketing.com/wp-content/plugins/gravityforms/assets/css/dist/gravity-forms-orbital-theme.min.css?ver=2.9.28'
+        media='all' />
+    <link rel='stylesheet' id='gform_basic-css'
+        href='https://vinylmarketing.com/wp-content/plugins/gravityforms/assets/css/dist/basic.min.css?ver=2.9.28'
+        media='all' />
+    <link rel='stylesheet' id='gform_theme_components-css'
+        href='https://vinylmarketing.com/wp-content/plugins/gravityforms/assets/css/dist/theme-components.min.css?ver=2.9.28'
+        media='all' />
+    <link rel='stylesheet' id='gform_theme-css'
+        href='https://vinylmarketing.com/wp-content/plugins/gravityforms/assets/css/dist/theme.min.css?ver=2.9.28'
+        media='all' />
+    <link rel='stylesheet' id='gforms_reset_css-css'
+        href='https://vinylmarketing.com/wp-content/plugins/gravityforms/legacy/css/formreset.min.css?ver=2.9.28'
+        media='all' />
+    <link rel='stylesheet' id='gforms_formsmain_css-css'
+        href='https://vinylmarketing.com/wp-content/plugins/gravityforms/legacy/css/formsmain.min.css?ver=2.9.28'
+        media='all' />
+    <link rel='stylesheet' id='gforms_ready_class_css-css'
+        href='https://vinylmarketing.com/wp-content/plugins/gravityforms/legacy/css/readyclass.min.css?ver=2.9.28'
+        media='all' />
+    <link rel='stylesheet' id='gforms_browsers_css-css'
+        href='https://vinylmarketing.com/wp-content/plugins/gravityforms/legacy/css/browsers.min.css?ver=2.9.28'
+        media='all' />
+    <link rel='stylesheet' id='gform_editor_block_form-css'
+        href='https://vinylmarketing.com/wp-content/plugins/gravityforms/assets/css/dist/blocks.min.css?ver=2.9.28'
+        media='all' />
+    <link rel='stylesheet' id='vm-blocks-bubble-editor-style-css'
+        href='https://vinylmarketing.com/wp-content/plugins/vm-bubble-blocks/build/bubble/index.css?ver=6.9.1'
+        media='all' />
+    <link rel='stylesheet' id='vm-blocks-bubble-cluster-editor-style-css'
+        href='https://vinylmarketing.com/wp-content/plugins/vm-bubble-blocks/build/bubble-cluster/index.css?ver=6.9.1'
+        media='all' />
+    <link rel='stylesheet' id='kadence-blocks-rowlayout-css'
+        href='https://vinylmarketing.com/wp-content/plugins/kadence-blocks/dist/blocks-rowlayout.css?ver=9e9ca015e271007ed39a'
+        media='all' />
+    <link rel='stylesheet' id='kadence-blocks-accordion-css'
+        href='https://vinylmarketing.com/wp-content/plugins/kadence-blocks/dist/blocks-accordion.css?ver=ead16f8868fd4a40fd62'
+        media='all' />
+    <link rel='stylesheet' id='kadence-blocks-advancedgallery-css'
+        href='https://vinylmarketing.com/wp-content/plugins/kadence-blocks/dist/blocks-advancedgallery.css?ver=ba6669e0756666d3b81e'
+        media='all' />
+    <link rel='stylesheet' id='kadence-blocks-advancedbtn-css'
+        href='https://vinylmarketing.com/wp-content/plugins/kadence-blocks/dist/blocks-advancedbtn.css?ver=8f2d08eb833d1d15045c'
+        media='all' />
+    <link rel='stylesheet' id='kadence-blocks-advancedheading-css'
+        href='https://vinylmarketing.com/wp-content/plugins/kadence-blocks/dist/blocks-advancedheading.css?ver=8466dcb552fcac466e8d'
+        media='all' />
+    <link rel='stylesheet' id='kadence-blocks-countdown-css'
+        href='https://vinylmarketing.com/wp-content/plugins/kadence-blocks/dist/blocks-countdown.css?ver=f2a7fba2fc865f25c178'
+        media='all' />
+    <link rel='stylesheet' id='kadence-blocks-countup-css'
+        href='https://vinylmarketing.com/wp-content/plugins/kadence-blocks/dist/blocks-countup.css?ver=8c7cd307f7c7190117a1'
+        media='all' />
+    <link rel='stylesheet' id='kadence-blocks-form-css'
+        href='https://vinylmarketing.com/wp-content/plugins/kadence-blocks/dist/blocks-form.css?ver=db8c26cad05aa466d197'
+        media='all' />
+    <link rel='stylesheet' id='kadence-blocks-googlemaps-css'
+        href='https://vinylmarketing.com/wp-content/plugins/kadence-blocks/dist/blocks-googlemaps.css?ver=e589fe0ebad7d6fc2493'
+        media='all' />
+    <link rel='stylesheet' id='kadence-blocks-icon-css'
+        href='https://vinylmarketing.com/wp-content/plugins/kadence-blocks/dist/blocks-icon.css?ver=aa90acbc257519a23902'
+        media='all' />
+    <link rel='stylesheet' id='kadence-blocks-iconlist-css'
+        href='https://vinylmarketing.com/wp-content/plugins/kadence-blocks/dist/blocks-iconlist.css?ver=bf90f5657451d88a91a9'
+        media='all' />
+    <link rel='stylesheet' id='kadence-blocks-infobox-css'
+        href='https://vinylmarketing.com/wp-content/plugins/kadence-blocks/dist/blocks-infobox.css?ver=9f020740662547988705'
+        media='all' />
+    <link rel='stylesheet' id='kadence-blocks-image-css'
+        href='https://vinylmarketing.com/wp-content/plugins/kadence-blocks/dist/blocks-image.css?ver=128a7de120d7f086b5a8'
+        media='all' />
+    <link rel='stylesheet' id='kadence-blocks-lottie-css'
+        href='https://vinylmarketing.com/wp-content/plugins/kadence-blocks/dist/blocks-lottie.css?ver=b1089eb4dd74259fb558'
+        media='all' />
+    <link rel='stylesheet' id='kadence-blocks-identity-css'
+        href='https://vinylmarketing.com/wp-content/plugins/kadence-blocks/dist/blocks-identity.css?ver=149d2fd7b809f6a76651'
+        media='all' />
+    <link rel='stylesheet' id='kadence-blocks-posts-css'
+        href='https://vinylmarketing.com/wp-content/plugins/kadence-blocks/dist/blocks-posts.css?ver=63d915ec39ceaf68f5cc'
+        media='all' />
+    <link rel='stylesheet' id='kadence-blocks-progress-bar-css'
+        href='https://vinylmarketing.com/wp-content/plugins/kadence-blocks/dist/blocks-progress-bar.css?ver=8c7677d33b21d4dab10a'
+        media='all' />
+    <link rel='stylesheet' id='kadence-blocks-search-css'
+        href='https://vinylmarketing.com/wp-content/plugins/kadence-blocks/dist/blocks-search.css?ver=6441f6183026c1ed056a'
+        media='all' />
+    <link rel='stylesheet' id='kadence-blocks-show-more-css'
+        href='https://vinylmarketing.com/wp-content/plugins/kadence-blocks/dist/blocks-show-more.css?ver=4c68fa38832d50d38232'
+        media='all' />
+    <link rel='stylesheet' id='kadence-blocks-spacer-css'
+        href='https://vinylmarketing.com/wp-content/plugins/kadence-blocks/dist/blocks-spacer.css?ver=d628413b9a6eae084c8c'
+        media='all' />
+    <link rel='stylesheet' id='kadence-blocks-table-css'
+        href='https://vinylmarketing.com/wp-content/plugins/kadence-blocks/dist/blocks-table.css?ver=63ffce543ae58cca9c78'
+        media='all' />
+    <link rel='stylesheet' id='kadence-blocks-tableofcontents-css'
+        href='https://vinylmarketing.com/wp-content/plugins/kadence-blocks/dist/blocks-tableofcontents.css?ver=846682bd7c0bdb09f550'
+        media='all' />
+    <link rel='stylesheet' id='kadence-blocks-tabs-css'
+        href='https://vinylmarketing.com/wp-content/plugins/kadence-blocks/dist/blocks-tabs.css?ver=d75f1e1eac88dfb0f465'
+        media='all' />
+    <link rel='stylesheet' id='kadence-blocks-testimonials-css'
+        href='https://vinylmarketing.com/wp-content/plugins/kadence-blocks/dist/blocks-testimonials.css?ver=7351abaf8775da439210'
+        media='all' />
+    <link rel='stylesheet' id='kadence-blocks-navigation-css'
+        href='https://vinylmarketing.com/wp-content/plugins/kadence-blocks/dist/blocks-navigation.css?ver=69819d7f3dbeed9319cd'
+        media='all' />
+    <link rel='stylesheet' id='kadence-blocks-navigation-link-css'
+        href='https://vinylmarketing.com/wp-content/plugins/kadence-blocks/dist/blocks-navigation-link.css?ver=f0558cc08cf37c714687'
+        media='all' />
+    <link rel='stylesheet' id='kadence-blocks-header-css'
+        href='https://vinylmarketing.com/wp-content/plugins/kadence-blocks/dist/blocks-header.css?ver=ce65e1f918c383c4bc63'
+        media='all' />
+    <link rel='stylesheet' id='kadence-blocks-videopopup-css'
+        href='https://vinylmarketing.com/wp-content/plugins/kadence-blocks/dist/blocks-videopopup.css?ver=1231e8642f2aaf05ba26'
+        media='all' />
+    <link rel='stylesheet' id='kadence-blocks-vector-css'
+        href='https://vinylmarketing.com/wp-content/plugins/kadence-blocks/dist/blocks-vector.css?ver=991a4466b7ede7f5f3cc'
+        media='all' />
+    <link rel='stylesheet' id='kadence-blocks-advanced-form-css'
+        href='https://vinylmarketing.com/wp-content/plugins/kadence-blocks/dist/blocks-advanced-form.css?ver=a3d1893cd525772d5ca9'
+        media='all' />
+    <link rel='stylesheet' id='kadence-blocks-pro-editor-css-css'
+        href='https://vinylmarketing.com/wp-content/plugins/kadence-blocks-pro/dist/blocks.css?ver=86443ba708bf60fa5577'
+        media='all' />
+    <link rel='stylesheet' id='kadence-blocks-pro-dynamichtml-css'
+        href='https://vinylmarketing.com/wp-content/plugins/kadence-blocks-pro/dist/blocks-dynamichtml.css?ver=22a6268499d697639690'
+        media='all' />
+    <link rel='stylesheet' id='kadence-blocks-pro-dynamiclist-css'
+        href='https://vinylmarketing.com/wp-content/plugins/kadence-blocks-pro/dist/blocks-dynamiclist.css?ver=fe11ec764f8a117be433'
+        media='all' />
+    <link rel='stylesheet' id='kadence-blocks-pro-imageoverlay-css'
+        href='https://vinylmarketing.com/wp-content/plugins/kadence-blocks-pro/dist/blocks-imageoverlay.css?ver=3833637c1d0b71ddcfce'
+        media='all' />
+    <link rel='stylesheet' id='kadence-blocks-pro-modal-css'
+        href='https://vinylmarketing.com/wp-content/plugins/kadence-blocks-pro/dist/blocks-modal.css?ver=c9f257c8dc274ec618af'
+        media='all' />
+    <link rel='stylesheet' id='kadence-blocks-pro-portfoliogrid-css'
+        href='https://vinylmarketing.com/wp-content/plugins/kadence-blocks-pro/dist/blocks-portfoliogrid.css?ver=06a80309c265e71ad1da'
+        media='all' />
+    <link rel='stylesheet' id='kadence-blocks-pro-postgrid-css'
+        href='https://vinylmarketing.com/wp-content/plugins/kadence-blocks-pro/dist/blocks-postgrid.css?ver=e76eaa694dae4dbe89df'
+        media='all' />
+    <link rel='stylesheet' id='kadence-blocks-pro-repeater-css'
+        href='https://vinylmarketing.com/wp-content/plugins/kadence-blocks-pro/dist/blocks-repeater.css?ver=bac15cb3c19e9818f007'
+        media='all' />
+    <link rel='stylesheet' id='kadence-blocks-pro-repeatertemplate-css'
+        href='https://vinylmarketing.com/wp-content/plugins/kadence-blocks-pro/dist/blocks-repeatertemplate.css?ver=fab38a39b81996648e85'
+        media='all' />
+    <link rel='stylesheet' id='kadence-blocks-pro-query-css'
+        href='https://vinylmarketing.com/wp-content/plugins/kadence-blocks-pro/dist/blocks-query.css?ver=0c2849bd146334bed0d6'
+        media='all' />
+    <link rel='stylesheet' id='kadence-blocks-pro-slider-css'
+        href='https://vinylmarketing.com/wp-content/plugins/kadence-blocks-pro/dist/blocks-slider.css?ver=4c728c944426a5102262'
+        media='all' />
+    <link rel='stylesheet' id='kadence-blocks-pro-slide-css'
+        href='https://vinylmarketing.com/wp-content/plugins/kadence-blocks-pro/dist/blocks-slide.css?ver=320e64b5f7c3face03cc'
+        media='all' />
+    <link rel='stylesheet' id='kadence-blocks-pro-splitcontent-css'
+        href='https://vinylmarketing.com/wp-content/plugins/kadence-blocks-pro/dist/blocks-splitcontent.css?ver=38def725f8988fe06b34'
+        media='all' />
+    <link rel='stylesheet' id='kadence-blocks-pro-userinfo-css'
+        href='https://vinylmarketing.com/wp-content/plugins/kadence-blocks-pro/dist/blocks-userinfo.css?ver=e7f4746f55e8fc9b8a3f'
+        media='all' />
+    <link rel='stylesheet' id='kadence-marquee-editor-style-css'
+        href='https://vinylmarketing.com/wp-content/plugins/kadence-creative-kit/build/blocks/marquee/index.css?ver=6.9.1'
+        media='all' />
+    <link rel='stylesheet' id='kadence-creative-kit-marquee-item-editor-css'
+        href='https://vinylmarketing.com/wp-content/plugins/kadence-creative-kit/build/blocks-marquee-item.css?ver=5abd33ecb8e1914bf1f2'
+        media='all' />
+
+    <script
+        src='https://vinylmarketing.com/wp-admin/load-scripts.php?c=0&amp;load%5Bchunk_0%5D=wp-polyfill&amp;ver=6.9.1'></script>
+
+</head>
+
+<body>
+    <script>document.currentScript.parentElement.remove()</script>
+</body>
+
+</html>

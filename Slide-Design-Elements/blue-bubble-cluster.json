@@ -1,0 +1,6 @@
+{
+  "__file": "wp_block",
+  "title": "Blue Bubble Cluster",
+  "content": "<!-- wp:vm-blocks/bubble-cluster {\"xOffset\":-12,\"yOffset\":15} -->\n<div class=\"wp-block-vm-blocks-bubble-cluster vm-bubble-cluster-container\" style=\"left:-12rem;top:15rem\"><div class=\"vm-bubble-cluster-wrapper\"><!-- wp:vm-blocks/bubble {\"backgroundColor\":\"#006778\",\"width\":39,\"yOffset\":-1,\"enablePulse\":false} -->\n<div class=\"wp-block-vm-blocks-bubble vm-bubble  has-006778-background-color has-background\" style=\"background-color:#006778;width:39rem;height:39rem;position:absolute;left:0rem;top:-1rem;--pulse-intensity:50%;--pulse-speed:2s\"></div>\n<!-- /wp:vm-blocks/bubble -->\n\n<!-- wp:vm-blocks/bubble {\"backgroundColor\":\"#80c6c6\",\"width\":31,\"xOffset\":14,\"yOffset\":-7,\"enablePulse\":false} -->\n<div class=\"wp-block-vm-blocks-bubble vm-bubble  has-80-c-6-c-6-background-color has-background\" style=\"background-color:#80c6c6;width:31rem;height:31rem;position:absolute;left:14rem;top:-7rem;--pulse-intensity:50%;--pulse-speed:2s\"></div>\n<!-- /wp:vm-blocks/bubble --></div></div>\n<!-- /wp:vm-blocks/bubble-cluster -->",
+  "syncStatus": "unsynced"
+}

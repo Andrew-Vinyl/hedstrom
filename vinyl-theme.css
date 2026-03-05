@@ -1,0 +1,316 @@
+/* @theme vinyl */
+@import 'default';
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=JetBrains+Mono:wght@400;700&display=swap');
+
+:root {
+    --primary: #0d5a67;
+    --secondary: #dc8044;
+    --accent-blue: #215387;
+    --accent-teal: #006778;
+    --light-teal: #80c6c6;
+    --bg-primary: #ece8e2;
+    --bg-white: #ffffff;
+
+    --font-body: 'DM Sans', sans-serif;
+    --font-heading: 'DM Sans', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    --color-default: var(--primary);
+    --color-background: var(--bg-primary);
+    --color-heading: var(--primary);
+}
+
+section {
+    background-color: var(--color-background);
+    color: var(--color-default);
+    font-family: var(--font-body);
+    font-size: 28px;
+    line-height: 1.5;
+    padding: 3rem 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-heading);
+    color: var(--color-heading);
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+h1 {
+    font-size: 64px;
+}
+
+h2 {
+    font-size: 48px;
+    border-bottom: 4px solid var(--secondary);
+    padding-bottom: 0.5rem;
+    display: inline-block;
+}
+
+h3 {
+    font-size: 36px;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+}
+
+ul {
+    padding-left: 2rem;
+}
+
+li {
+    margin-bottom: 0.5rem;
+}
+
+strong {
+    font-weight: 700;
+}
+
+/* Custom Grid Layouts */
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+/* Content Cards */
+.card {
+    background-color: var(--bg-white);
+    padding: 2rem;
+    border-radius: 8px;
+    /* Optional, but Vinyl site has soft bubbles, let's keep it sharp or slightly rounded */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border-left: 8px solid var(--primary);
+}
+
+.card.highlight {
+    border-left-color: var(--secondary);
+}
+
+.card h3 {
+    font-size: 24px;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.card p {
+    color: var(--primary) !important;
+}
+
+/* Metric Display */
+.metric {
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--bg-white);
+    border: 2px solid var(--light-teal);
+}
+
+.metric .number {
+    font-family: var(--font-mono);
+    font-size: 80px;
+    font-weight: 700;
+    color: var(--secondary);
+    line-height: 1;
+    display: block;
+}
+
+.metric .label {
+    font-size: 18px;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin-top: 0.5rem;
+    font-weight: 700;
+}
+
+.metric .delta {
+    display: inline-block;
+    font-family: var(--font-mono);
+    background-color: var(--accent-teal);
+    color: white;
+    padding: 0.2rem 0.5rem;
+    font-size: 16px;
+    margin-top: 1rem;
+}
+
+.metric .delta.negative {
+    background-color: #b82105;
+    /* Pulled from global-palette13 error red */
+}
+
+/* Bar Chart (CSS) */
+.css-bar-chart {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.bar-row {
+    display: flex;
+    align-items: center;
+}
+
+.bar-label {
+    width: 150px;
+    font-family: var(--font-mono);
+    font-size: 16px;
+    text-align: right;
+    padding-right: 1rem;
+    text-transform: uppercase;
+}
+
+.bar-container {
+    flex-grow: 1;
+    background-color: rgba(13, 90, 103, 0.1);
+    height: 40px;
+    position: relative;
+}
+
+.bar-fill {
+    height: 100%;
+    background-color: var(--primary);
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+    color: white;
+    font-family: var(--font-mono);
+    font-weight: 700;
+}
+
+.bar-fill.highlight {
+    background-color: var(--secondary);
+}
+
+/* Donut Chart (CSS) */
+.donut-chart-container {
+    position: relative;
+    width: 320px;
+    height: 320px;
+    margin: 0 auto;
+}
+
+.donut-chart {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: conic-gradient(var(--secondary) 0% 51%,
+            var(--primary) 51% 96%,
+            var(--accent-blue) 96% 98%,
+            var(--light-teal) 98% 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.donut-hole {
+    width: 70%;
+    height: 70%;
+    background-color: var(--accent-teal);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+/* Title Slide */
+section.title-slide {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: var(--accent-teal);
+    color: white;
+}
+
+section.title-slide h1 {
+    color: white;
+    font-size: 72px;
+    margin-bottom: 1rem;
+}
+
+section.title-slide h1 span {
+    color: var(--secondary);
+}
+
+section.title-slide p {
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 20px;
+    color: var(--light-teal);
+}
+
+/* Footer / Accent Slides */
+section.dark-slide {
+    background-color: var(--primary);
+    color: white;
+}
+
+section.dark-slide h2 {
+    color: white;
+    border-color: var(--secondary);
+}
+
+/* Quote/Callout */
+.callout {
+    background-color: var(--primary);
+    color: white;
+    padding: 2.5rem;
+    font-size: 32px;
+    line-height: 1.4;
+    border-left: 12px solid var(--secondary);
+    margin: 2rem 0;
+}
+
+/* Table Design */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 2rem;
+    background: white;
+}
+
+th {
+    background-color: var(--primary);
+    color: white;
+    text-align: left;
+    padding: 1rem;
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    font-size: 16px;
+}
+
+td {
+    padding: 1.5rem 1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    font-size: 22px;
+}
+
+td:last-child {
+    font-weight: bold;
+    color: var(--secondary);
+}
