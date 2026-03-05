@@ -642,15 +642,26 @@ td:last-child {
     .channel-performance-grid {
         display: flex;
         flex-direction: column;
+        gap: 0.5rem;
     }
 
     .channel-performance-grid>div:first-child {
         order: 2;
+        margin-top: 0 !important;
     }
 
     .channel-performance-grid>div:last-child {
         order: 1;
-        margin-bottom: 2rem;
+        margin-bottom: 0.5rem;
+    }
+
+    /* Badge tweaks for mobile */
+    .badge {
+        font-size: 0.65rem;
+        margin-left: 0.5rem;
+        padding: 0.25rem 0.4rem;
+        white-space: nowrap;
+        display: inline-block;
     }
 
     /* Metric cards */
