@@ -596,12 +596,14 @@ td:last-child {
     width: 0;
     /* Overridden by inline style via JS on scroll */
 }
+
 /* 
   ========================================
   MOBILE RESPONSIVENESS
   ======================================== 
 */
 @media (max-width: 900px) {
+
     /* Adjust overall sizing */
     :root {
         --global-content-width: 100%;
@@ -631,8 +633,24 @@ td:last-child {
         gap: 1.5rem;
     }
 
-    .grid-2, .grid-3 {
+    .grid-2,
+    .grid-3 {
         grid-template-columns: 1fr;
+    }
+
+    /* Ordering for Channel Performance Grid */
+    .channel-performance-grid {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .channel-performance-grid>div:first-child {
+        order: 2;
+    }
+
+    .channel-performance-grid>div:last-child {
+        order: 1;
+        margin-bottom: 2rem;
     }
 
     /* Metric cards */
@@ -671,13 +689,14 @@ td:last-child {
     section.dark h2[style*="font-size: 5rem"] {
         font-size: 3rem !important;
     }
-    
+
     section.dark p[style*="font-size: 2rem"] {
         font-size: 1.25rem !important;
     }
 
     /* Table adjustments */
-    th, td {
+    th,
+    td {
         padding: 1rem;
         font-size: 1rem;
     }
@@ -687,17 +706,20 @@ td:last-child {
     */
     .orbit-network {
         max-width: 100%;
-        height: 350px; /* Reduced highly */
+        height: 350px;
+        /* Reduced highly */
         overflow: visible;
     }
 
     .orbit-center {
-        width: 200px; /* Scaled down from 480px */
+        width: 200px;
+        /* Scaled down from 480px */
         height: 200px;
     }
 
     .orbit-center .number {
-        font-size: 4rem; /* Scaled down */
+        font-size: 4rem;
+        /* Scaled down */
     }
 
     .orbit-center .label {
@@ -705,12 +727,14 @@ td:last-child {
     }
 
     .orbit-social {
-        width: 240px; /* Scaled down */
+        width: 240px;
+        /* Scaled down */
         height: 240px;
     }
 
     .orbit-referral {
-        width: 280px; /* Scaled down */
+        width: 280px;
+        /* Scaled down */
         height: 280px;
     }
 
@@ -719,7 +743,7 @@ td:last-child {
         height: 14px;
         box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.8), 0 2px 4px rgba(0, 0, 0, 0.15);
     }
-    
+
     .orbit-legend {
         flex-direction: column;
         align-items: center;
@@ -732,11 +756,11 @@ td:last-child {
     .container {
         padding: 0 1.25rem;
     }
-    
+
     .hero h1 {
         font-size: 2.5rem;
     }
-    
+
     .hero .meta {
         font-size: 1rem;
     }
