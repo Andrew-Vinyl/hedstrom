@@ -1,8 +1,8 @@
 {
     "rewrites": [
         {
-            "source": "/",
-            "destination": "/hedstrom-insights-portal.html"
+            "source": "/_internal/(.*)",
+            "destination": "/404"
         }
     ]
 }
